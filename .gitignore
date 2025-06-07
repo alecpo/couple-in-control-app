@@ -7,7 +7,6 @@ node_modules/
 .expo/
 dist/
 web-build/
-expo-env.d.ts
 
 # Native
 .kotlin/
@@ -35,3 +34,9 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# iOS
+ios/
+
+# Android
+android/
