@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import Container from '../components/Container';
+import React from "react";
+import { View, Text } from "react-native";
+import Container from "../components/Container";
 
 export default function Profile() {
   return (
@@ -12,4 +12,4 @@ export default function Profile() {
       </View>
     </Container>
   );
-} 
+}
