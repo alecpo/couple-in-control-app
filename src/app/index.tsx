@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import Container from "../components/Container";
 import ControlledTextInput from "../components/form/ControlledTextInput/ControlledTextInput";
 import { useForm, FormProvider } from "react-hook-form";
@@ -17,7 +17,7 @@ export default function CashFlow() {
   });
 
   const onSubmit = (data: CreateIncomeCashForm) => {
-    console.log(data);
+    window.console.log(data);
   };
 
   return (

@@ -27,6 +27,7 @@ module.exports = {
     'react-native/no-inline-styles': 'warn',
     'prettier/prettier': 'warn',
     '@typescript-eslint/triple-slash-reference': 'off',
+    'react-native/no-raw-text': 'off',
   },
   settings: {
     react: {

@@ -1,10 +1,4 @@
-import {
-  useForm,
-  Controller,
-  Control,
-  FieldValues,
-  Path,
-} from "react-hook-form";
+import { Controller, Control, FieldValues, Path } from "react-hook-form";
 import { TextInput, View, Text, TextInputProps } from "react-native";
 
 interface ControlledTextInputProps<T extends FieldValues>
