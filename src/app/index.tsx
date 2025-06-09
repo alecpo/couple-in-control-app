@@ -1,15 +1,37 @@
 import React from "react";
 import { View, Text } from "react-native";
 import Container from "../components/Container";
+import ControlledTextInput from "../components/form/ControlledTextInput/ControlledTextInput";
+import { useForm, FormProvider } from "react-hook-form";
+import Button from "../components/Button";
+
+interface CreateIncomeCashForm {
+  firstName: string;
+}
 
 export default function CashFlow() {
+  const form = useForm<CreateIncomeCashForm>({
+    defaultValues: {
+      firstName: "",
+    },
+  });
+
+  const onSubmit = (data: CreateIncomeCashForm) => {
+    console.log(data);
+  };
+
   return (
     <Container>
-      <View className="flex-1 items-center justify-center">
-        <Text className="text-3xl font-bold text-purple-500 bg-gray-100 p-4 rounded-lg">
-          Cash Flow Page
-        </Text>
-      </View>
+      <FormProvider {...form}>
+        <View>
+          <ControlledTextInput
+            name="firstName"
+            label="First Name"
+            placeholder="Enter your first name"
+          />
+          <Button onPress={form.handleSubmit(onSubmit)}>Submit</Button>
+        </View>
+      </FormProvider>
     </Container>
   );
 }

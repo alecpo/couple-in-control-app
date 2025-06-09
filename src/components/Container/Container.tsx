@@ -12,7 +12,7 @@ const Container = ({
   scrollable = false,
   className = "",
 }: ContainerProps) => {
-  const baseClasses = "flex-1 bg-white dark:bg-gray-900";
+  const baseClasses = "flex-1 bg-white dark:bg-gray-900 p-4";
   const contentClasses = "flex-1 px-4 py-6";
 
   const Content = () => (

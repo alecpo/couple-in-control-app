@@ -2,6 +2,8 @@ import React from "react";
 import { Tabs } from "expo-router";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+import "@/styles/global.css";
+
 export default function AppLayout() {
   return (
     <Tabs

@@ -7,13 +7,16 @@
       "nativewind/types"
     ],
     "typeRoots": [
-      "./src/types",
+      "src/@types",
       "./node_modules/@types"
-    ]
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
     "src/**/*",
-    "src/types/nativewind-env.d.ts",
+    "src/@types/nativewind-env.d.ts",
     "nativewind-env.d.ts"
   ]
 }
