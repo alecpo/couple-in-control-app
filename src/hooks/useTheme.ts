@@ -1,41 +1,47 @@
-import { useCallback, useEffect } from 'react'
+import { useColorScheme } from 'react-native'
+import { useCallback, useEffect, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useColorScheme } from 'nativewind'
 
 const THEME_STORAGE_KEY = '@theme'
 
-export function useTheme() {
-  const { colorScheme, setColorScheme } = useColorScheme()
+type ColorScheme = 'light' | 'dark'
 
-  const loadTheme = useCallback(() => {
-    AsyncStorage.getItem(THEME_STORAGE_KEY)
-      .then(savedTheme => {
-        if (savedTheme) {
-          setColorScheme(savedTheme as 'light' | 'dark')
-        }
-      })
-      .catch(error => {
-        window.console.error('Error loading theme:', error)
-      })
-  }, [setColorScheme])
+export const useTheme = () => {
+  const systemColorScheme = useColorScheme() as ColorScheme
+  const [colorScheme, setColorScheme] = useState<ColorScheme>(systemColorScheme)
+  const [isLoading, setIsLoading] = useState(true)
+
+  const loadTheme = useCallback(async () => {
+    try {
+      const savedTheme = await AsyncStorage.getItem(THEME_STORAGE_KEY)
+      if (savedTheme) {
+        setColorScheme(savedTheme as ColorScheme)
+      }
+    } catch (error) {
+      window.console.error('Error loading theme:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
 
   useEffect(() => {
     loadTheme()
   }, [loadTheme])
 
-  const toggleTheme = useCallback(() => {
-    const newTheme = colorScheme === 'dark' ? 'light' : 'dark'
-    AsyncStorage.setItem(THEME_STORAGE_KEY, newTheme)
-      .then(() => {
-        setColorScheme(newTheme)
-      })
-      .catch(error => {
-        window.console.error('Error saving theme:', error)
-      })
-  }, [colorScheme, setColorScheme])
+  const toggleTheme = useCallback(async () => {
+    const newTheme = colorScheme === 'light' ? 'dark' : 'light'
+    setColorScheme(newTheme)
+
+    try {
+      await AsyncStorage.setItem(THEME_STORAGE_KEY, newTheme)
+    } catch (error) {
+      window.console.error('Error saving theme:', error)
+    }
+  }, [colorScheme])
 
   return {
     colorScheme,
     toggleTheme,
+    isLoading,
   }
 }

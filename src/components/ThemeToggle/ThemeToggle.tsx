@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Pressable } from 'react-native'
 import Animated, {
   useAnimatedStyle,
@@ -14,25 +14,26 @@ import { useTheme } from '@/hooks/useTheme'
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
 const ThemeToggle = () => {
-  const { colorScheme, toggleTheme } = useTheme()
+  const { colorScheme, toggleTheme, isLoading } = useTheme()
   const isDark = colorScheme === 'dark'
   const progress = useSharedValue(isDark ? 1 : 0)
   const scale = useSharedValue(1)
 
+  useEffect(() => {
+    progress.value = withSpring(isDark ? 1 : 0, {
+      damping: 15,
+      stiffness: 100,
+    })
+  }, [isDark, progress])
+
   const handlePress = () => {
-    // First animate the press
+    if (isLoading) return
+
     scale.value = withSequence(
       withTiming(0.9, { duration: 100 }),
       withTiming(1, { duration: 100 })
     )
 
-    // Then update the progress value
-    progress.value = withSpring(isDark ? 0 : 1, {
-      damping: 15,
-      stiffness: 100,
-    })
-
-    // Finally toggle the theme
     toggleTheme()
   }
 
@@ -40,14 +41,12 @@ const ThemeToggle = () => {
     const backgroundColor = interpolateColor(
       progress.value,
       [0, 1],
-      ['#F1F3F5', '#343A40'] // neutral-100 to neutral-800
+      ['#F1F3F5', '#343A40']
     )
-
-    const rotate = progress.value * 180
 
     return {
       backgroundColor,
-      transform: [{ rotate: `${rotate}deg` }, { scale: scale.value }],
+      transform: [{ scale: scale.value }],
     }
   })
 
@@ -81,12 +80,13 @@ const ThemeToggle = () => {
       className="p-2 rounded-full items-center justify-center w-10 h-10 active:opacity-80"
       style={animatedStyle}
       android_ripple={{ color: 'rgba(0, 0, 0, 0.1)', borderless: true }}
+      disabled={isLoading}
     >
       <Animated.View style={sunIconStyle} className="absolute">
         <Ionicons
           name="sunny"
           size={24}
-          color="#FFB900" // warning-500
+          color="#FFB900"
           className="text-warning-500"
         />
       </Animated.View>
@@ -94,7 +94,7 @@ const ThemeToggle = () => {
         <Ionicons
           name="moon"
           size={24}
-          color="#0066FF" // primary-500
+          color="#0066FF"
           className="text-primary-500"
         />
       </Animated.View>
