@@ -1,6 +1,6 @@
-import React from "react";
-import { View, Text } from "react-native";
-import Container from "../components/Container";
+import React from 'react'
+import { View, Text } from 'react-native'
+import Container from '@/components/Container'
 
 export default function PiggyBanks() {
   return (
@@ -11,5 +11,5 @@ export default function PiggyBanks() {
         </Text>
       </View>
     </Container>
-  );
+  )
 }

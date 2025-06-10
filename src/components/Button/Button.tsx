@@ -1,5 +1,5 @@
-import { PropsWithChildren } from "react";
-import { Text, TouchableOpacity, TouchableOpacityProps } from "react-native";
+import { PropsWithChildren } from 'react'
+import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native'
 
 interface ButtonProps extends PropsWithChildren<TouchableOpacityProps> {}
 
@@ -12,7 +12,7 @@ const Button = ({ children, ...props }: ButtonProps) => {
     >
       <Text className="text-white text-center font-semibold">{children}</Text>
     </TouchableOpacity>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

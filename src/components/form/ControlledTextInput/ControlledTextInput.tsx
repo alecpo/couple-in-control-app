@@ -1,13 +1,13 @@
-import { Controller, Control, FieldValues, Path } from "react-hook-form";
-import { TextInput, View, Text, TextInputProps } from "react-native";
+import { Controller, Control, FieldValues, Path } from 'react-hook-form'
+import { TextInput, View, Text, TextInputProps } from 'react-native'
 
 interface ControlledTextInputProps<T extends FieldValues>
   extends TextInputProps {
-  name: Path<T>;
-  label?: string;
-  control?: Control<T>;
-  placeholder: string;
-  error?: string;
+  name: Path<T>
+  label?: string
+  control?: Control<T>
+  placeholder: string
+  error?: string
 }
 
 const ControlledTextInput = <T extends FieldValues>({
@@ -34,7 +34,7 @@ const ControlledTextInput = <T extends FieldValues>({
             onChangeText={onChange}
             value={value}
             className={`px-4 py-3 rounded-lg border ${
-              error ? "border-red-500" : "border-gray-300"
+              error ? 'border-red-500' : 'border-gray-300'
             } bg-white text-gray-900 text-base`}
             placeholderTextColor="#9CA3AF"
             selectionColor="#3b82f6"
@@ -46,7 +46,7 @@ const ControlledTextInput = <T extends FieldValues>({
       />
       {error && <Text className="text-red-500 text-xs mt-1">{error}</Text>}
     </View>
-  );
-};
+  )
+}
 
-export default ControlledTextInput;
+export default ControlledTextInput

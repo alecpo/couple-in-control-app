@@ -6,7 +6,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:react-native/all',
-    'prettier'
+    'plugin:prettier/recommended'
   ],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'react', 'react-hooks', 'react-native', 'prettier'],
@@ -25,9 +25,17 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'react-native/no-inline-styles': 'warn',
-    'prettier/prettier': 'warn',
     '@typescript-eslint/triple-slash-reference': 'off',
     'react-native/no-raw-text': 'off',
+    'prettier/prettier': ['error', {
+      semi: false,
+      singleQuote: true,
+      trailingComma: 'es5',
+      tabWidth: 2,
+      printWidth: 80,
+      bracketSpacing: true,
+      arrowParens: 'avoid'
+    }]
   },
   settings: {
     react: {

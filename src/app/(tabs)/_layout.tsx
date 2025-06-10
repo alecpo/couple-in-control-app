@@ -1,30 +1,30 @@
-import React from "react";
-import { Tabs } from "expo-router";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import React from 'react'
+import { Tabs } from 'expo-router'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-import "@/styles/global.css";
+import '@/styles/global.css'
 
 export default function AppLayout() {
   return (
     <Tabs
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: "white",
+          backgroundColor: 'white',
           borderTopWidth: 1,
-          borderTopColor: "#e5e7eb",
+          borderTopColor: '#e5e7eb',
           height: 60,
           paddingBottom: 8,
           paddingTop: 8,
         },
-        tabBarActiveTintColor: "#3b82f6",
-        tabBarInactiveTintColor: "#6b7280",
+        tabBarActiveTintColor: '#3b82f6',
+        tabBarInactiveTintColor: '#6b7280',
         headerShown: false,
       }}
     >
       <Tabs.Screen
         name="piggyBanks"
         options={{
-          title: "Cofrinhos`",
+          title: 'Cofrinhos`',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
               name="piggy-bank-outline"
@@ -37,7 +37,7 @@ export default function AppLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Fluxo de Caixa",
+          title: 'Fluxo de Caixa',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
               name="cash-multiple"
@@ -50,7 +50,7 @@ export default function AppLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: "Perfil",
+          title: 'Perfil',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
               name="account-outline"
@@ -61,5 +61,5 @@ export default function AppLayout() {
         }}
       />
     </Tabs>
-  );
+  )
 }

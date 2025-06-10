@@ -1,24 +1,24 @@
-import React from "react";
-import { View } from "react-native";
-import Container from "../components/Container";
-import ControlledTextInput from "../components/form/ControlledTextInput/ControlledTextInput";
-import { useForm, FormProvider } from "react-hook-form";
-import Button from "../components/Button";
+import React from 'react'
+import { View } from 'react-native'
+import Container from '@/components/Container'
+import ControlledTextInput from '@/components/form/ControlledTextInput/ControlledTextInput'
+import Button from '@/components/Button'
+import { useForm, FormProvider } from 'react-hook-form'
 
 interface CreateIncomeCashForm {
-  firstName: string;
+  firstName: string
 }
 
 export default function CashFlow() {
   const form = useForm<CreateIncomeCashForm>({
     defaultValues: {
-      firstName: "",
+      firstName: '',
     },
-  });
+  })
 
   const onSubmit = (data: CreateIncomeCashForm) => {
-    window.console.log(data);
-  };
+    window.console.log(data)
+  }
 
   return (
     <Container>
@@ -33,5 +33,5 @@ export default function CashFlow() {
         </View>
       </FormProvider>
     </Container>
-  );
+  )
 }
