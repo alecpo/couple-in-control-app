@@ -1,18 +1,18 @@
 import { View, ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-interface ContainerProps {
+export interface ContainerProps {
   children: React.ReactNode
   scrollable?: boolean
   className?: string
 }
 
-const Container = ({
+export const Container = ({
   children,
   scrollable = false,
   className = '',
 }: ContainerProps) => {
-  const baseClasses = 'flex-1 bg-primary-500 p-4'
+  const baseClasses = 'flex-1 bg-primary-500 dark:bg-primary-900 p-4'
   const contentClasses = 'flex-1 px-4 py-6'
 
   const Content = () => (
@@ -31,5 +31,3 @@ const Container = ({
     </SafeAreaView>
   )
 }
-
-export default Container

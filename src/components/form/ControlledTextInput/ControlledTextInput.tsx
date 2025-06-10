@@ -1,7 +1,7 @@
 import { Controller, Control, FieldValues, Path } from 'react-hook-form'
 import { TextInput, View, Text, TextInputProps } from 'react-native'
 
-interface ControlledTextInputProps<T extends FieldValues>
+export interface ControlledTextInputProps<T extends FieldValues>
   extends TextInputProps {
   name: Path<T>
   label?: string
@@ -10,7 +10,7 @@ interface ControlledTextInputProps<T extends FieldValues>
   error?: string
 }
 
-const ControlledTextInput = <T extends FieldValues>({
+export const ControlledTextInput = <T extends FieldValues>({
   control,
   name,
   label,
@@ -48,5 +48,3 @@ const ControlledTextInput = <T extends FieldValues>({
     </View>
   )
 }
-
-export default ControlledTextInput

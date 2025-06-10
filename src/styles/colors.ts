@@ -1,74 +1,108 @@
-export default {
-  neutral: {
-    50: 'var(--neutral-50)',
-    100: 'var(--neutral-100)',
-    200: 'var(--neutral-200)',
-    300: 'var(--neutral-300)',
-    400: 'var(--neutral-400)',
-    500: 'var(--neutral-500)',
-    600: 'var(--neutral-600)',
-    700: 'var(--neutral-700)',
-    800: 'var(--neutral-800)',
-    900: 'var(--neutral-900)',
-  },
+export const colors = {
+  // Primary colors
   primary: {
-    50: 'var(--primary-50)',
-    100: 'var(--primary-100)',
-    200: 'var(--primary-200)',
-    300: 'var(--primary-300)',
-    400: 'var(--primary-400)',
-    500: 'var(--primary-500)',
-    600: 'var(--primary-600)',
-    700: 'var(--primary-700)',
-    800: 'var(--primary-800)',
-    900: 'var(--primary-900)',
+    50: '#f0f9ff',
+    100: '#e0f2fe',
+    200: '#bae6fd',
+    300: '#7dd3fc',
+    400: '#38bdf8',
+    500: '#0ea5e9',
+    600: '#0284c7',
+    700: '#0369a1',
+    800: '#075985',
+    900: '#0c4a6e',
   },
+
+  // Secondary colors (complementary to primary)
   secondary: {
-    50: 'var(--secondary-50)',
-    100: 'var(--secondary-100)',
-    200: 'var(--secondary-200)',
-    300: 'var(--secondary-300)',
-    400: 'var(--secondary-400)',
-    500: 'var(--secondary-500)',
-    600: 'var(--secondary-600)',
-    700: 'var(--secondary-700)',
-    800: 'var(--secondary-800)',
-    900: 'var(--secondary-900)',
+    50: '#fdf4ff',
+    100: '#fae8ff',
+    200: '#f5d0fe',
+    300: '#f0abfc',
+    400: '#e879f9',
+    500: '#d946ef',
+    600: '#c026d3',
+    700: '#a21caf',
+    800: '#86198f',
+    900: '#701a75',
   },
+
+  // Success colors
   success: {
-    50: 'var(--success-50)',
-    100: 'var(--success-100)',
-    200: 'var(--success-200)',
-    300: 'var(--success-300)',
-    400: 'var(--success-400)',
-    500: 'var(--success-500)',
-    600: 'var(--success-600)',
-    700: 'var(--success-700)',
-    800: 'var(--success-800)',
-    900: 'var(--success-900)',
+    50: '#f0fdf4',
+    100: '#dcfce7',
+    200: '#bbf7d0',
+    300: '#86efac',
+    400: '#4ade80',
+    500: '#22c55e',
+    600: '#16a34a',
+    700: '#15803d',
+    800: '#166534',
+    900: '#14532d',
   },
+
+  // Warning colors
   warning: {
-    50: 'var(--warning-50)',
-    100: 'var(--warning-100)',
-    200: 'var(--warning-200)',
-    300: 'var(--warning-300)',
-    400: 'var(--warning-400)',
-    500: 'var(--warning-500)',
-    600: 'var(--warning-600)',
-    700: 'var(--warning-700)',
-    800: 'var(--warning-800)',
-    900: 'var(--warning-900)',
+    50: '#fffbeb',
+    100: '#fef3c7',
+    200: '#fde68a',
+    300: '#fcd34d',
+    400: '#fbbf24',
+    500: '#f59e0b',
+    600: '#d97706',
+    700: '#b45309',
+    800: '#92400e',
+    900: '#78350f',
   },
+
+  // Error colors
   error: {
-    50: 'var(--error-50)',
-    100: 'var(--error-100)',
-    200: 'var(--error-200)',
-    300: 'var(--error-300)',
-    400: 'var(--error-400)',
-    500: 'var(--error-500)',
-    600: 'var(--error-600)',
-    700: 'var(--error-700)',
-    800: 'var(--error-800)',
-    900: 'var(--error-900)',
+    50: '#fef2f2',
+    100: '#fee2e2',
+    200: '#fecaca',
+    300: '#fca5a5',
+    400: '#f87171',
+    500: '#ef4444',
+    600: '#dc2626',
+    700: '#b91c1c',
+    800: '#991b1b',
+    900: '#7f1d1d',
   },
-}
+
+  // Neutral colors
+  neutral: {
+    50: '#f8fafc',
+    100: '#f1f5f9',
+    200: '#e2e8f0',
+    300: '#cbd5e1',
+    400: '#94a3b8',
+    500: '#64748b',
+    600: '#475569',
+    700: '#334155',
+    800: '#1e293b',
+    900: '#0f172a',
+  },
+
+  // Background colors
+  background: {
+    light: '#ffffff',
+    dark: '#0f172a',
+  },
+
+  // Text colors
+  text: {
+    light: {
+      primary: '#0f172a',
+      secondary: '#475569',
+      tertiary: '#94a3b8',
+    },
+    dark: {
+      primary: '#f8fafc',
+      secondary: '#cbd5e1',
+      tertiary: '#64748b',
+    },
+  },
+} as const
+
+// Type for the colors object
+export type ColorScheme = typeof colors

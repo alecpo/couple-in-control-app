@@ -26,7 +26,6 @@ module.exports = {
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'react-native/no-inline-styles': 'warn',
     '@typescript-eslint/triple-slash-reference': 'off',
-    'react-native/no-raw-text': 'off',
     'prettier/prettier': ['error', {
       semi: false,
       singleQuote: true,

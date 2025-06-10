@@ -1,9 +1,9 @@
 import { PropsWithChildren } from 'react'
 import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native'
 
-interface ButtonProps extends PropsWithChildren<TouchableOpacityProps> {}
+export interface ButtonProps extends PropsWithChildren<TouchableOpacityProps> {}
 
-const Button = ({ children, ...props }: ButtonProps) => {
+export const Button = ({ children, ...props }: ButtonProps) => {
   return (
     <TouchableOpacity
       className="bg-blue-500 p-4 rounded-lg mt-4"
@@ -14,5 +14,3 @@ const Button = ({ children, ...props }: ButtonProps) => {
     </TouchableOpacity>
   )
 }
-
-export default Button

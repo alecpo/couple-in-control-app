@@ -1,8 +1,6 @@
 import React from 'react'
-import { View } from 'react-native'
-import Container from '@/components/Container'
-import ControlledTextInput from '@/components/form/ControlledTextInput/ControlledTextInput'
-import Button from '@/components/Button'
+import { View, Text } from 'react-native'
+import { Container, ControlledTextInput, Button } from '@/components'
 import { useForm, FormProvider } from 'react-hook-form'
 
 interface CreateIncomeCashForm {
@@ -29,7 +27,9 @@ export default function CashFlow() {
             label="First Name"
             placeholder="Enter your first name"
           />
-          <Button onPress={form.handleSubmit(onSubmit)}>Submit</Button>
+          <Button onPress={form.handleSubmit(onSubmit)}>
+            <Text>Submit</Text>
+          </Button>
         </View>
       </FormProvider>
     </Container>

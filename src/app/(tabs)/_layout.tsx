@@ -1,30 +1,34 @@
 import React from 'react'
 import { Tabs } from 'expo-router'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { useColorScheme } from 'nativewind'
+// import 'nativewind/tailwind.css'
 
 import '@/styles/global.css'
 
 export default function AppLayout() {
+  const { colorScheme } = useColorScheme()
+
   return (
     <Tabs
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: 'white',
+          backgroundColor: colorScheme === 'dark' ? '#1e293b' : 'white',
           borderTopWidth: 1,
-          borderTopColor: '#e5e7eb',
+          borderTopColor: colorScheme === 'dark' ? '#334155' : '#e5e7eb',
           height: 60,
           paddingBottom: 8,
           paddingTop: 8,
         },
         tabBarActiveTintColor: '#3b82f6',
-        tabBarInactiveTintColor: '#6b7280',
+        tabBarInactiveTintColor: colorScheme === 'dark' ? '#94a3b8' : '#6b7280',
         headerShown: false,
       }}
     >
       <Tabs.Screen
         name="piggyBanks"
         options={{
-          title: 'Cofrinhos`',
+          title: 'Cofrinhos',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
               name="piggy-bank-outline"

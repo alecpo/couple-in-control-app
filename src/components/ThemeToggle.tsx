@@ -6,12 +6,35 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useEffect, useCallback } from 'react'
+
+const THEME_STORAGE_KEY = '@couple_in_control_theme'
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
-export const ThemeToggle = () => {
+export function ThemeToggle() {
   const { colorScheme, toggleColorScheme } = useColorScheme()
   const rotation = useSharedValue(0)
+
+  console.log('Current colorScheme:', colorScheme)
+
+  const handlePress = useCallback(async () => {
+    console.log('Before toggle - colorScheme:', colorScheme)
+    // Animate rotation
+    rotation.value = withSpring(rotation.value + 180, {
+      damping: 15,
+      stiffness: 100,
+    })
+
+    // Update theme
+    toggleColorScheme()
+    console.log('After toggle - colorScheme:', colorScheme)
+  }, [rotation, toggleColorScheme, colorScheme])
+
+  useEffect(() => {
+    console.log('colorScheme changed:', colorScheme)
+  }, [colorScheme])
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
@@ -22,14 +45,6 @@ export const ThemeToggle = () => {
       ],
     }
   })
-
-  const handlePress = () => {
-    rotation.value = withSpring(rotation.value + 180, {
-      damping: 15,
-      stiffness: 100,
-    })
-    toggleColorScheme()
-  }
 
   return (
     <AnimatedPressable

@@ -1,19 +1,18 @@
-import colors from "./src/styles/colors";
-import theme from "./src/styles/theme";
+const { colors } = require('./src/styles/colors');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'selector',
-  content: ["./src/**/*.{ts,tsx}"],
   presets: [require("nativewind/preset")],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: 'class',
   theme: {
     extend: {
       colors,
     },
   },
-  plugins: [
-    function({ addBase }) {
-      addBase(theme);
-    },
-  ],
-}
+  plugins: [],
+  important: 'html',
+  corePlugins: {
+    preflight: false,
+  },
+};
