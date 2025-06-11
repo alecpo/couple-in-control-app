@@ -3,26 +3,26 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { useColorScheme } from 'nativewind'
 
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { useThemeColors } from '@/hooks/useThemeColors'
 
 export default function TabsLayout() {
-  const { colorScheme } = useColorScheme()
-  const backgroundColor = colorScheme === 'dark' ? '#1e293b' : 'white'
+  const colors = useThemeColors()
+  const backgroundColor = colors.background.light
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor }}>
       <Tabs
         screenOptions={{
           tabBarStyle: {
-            backgroundColor: colorScheme === 'dark' ? '#1e293b' : 'white',
+            backgroundColor,
             borderTopWidth: 1,
-            borderTopColor: colorScheme === 'dark' ? '#334155' : '#e5e7eb',
+            borderTopColor: colors.neutral[200],
             height: 60,
             paddingBottom: 8,
             paddingTop: 8,
           },
-          tabBarActiveTintColor: '#3b82f6',
-          tabBarInactiveTintColor:
-            colorScheme === 'dark' ? '#94a3b8' : '#6b7280',
+          tabBarActiveTintColor: colors.primary[500],
+          tabBarInactiveTintColor: colors.neutral[500],
           headerShown: false,
         }}
       >

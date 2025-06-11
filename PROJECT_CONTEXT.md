@@ -1,89 +1,87 @@
-# Contexto do Projeto - Couple in Control
+# Couple in Control App
 
-## 🏗️ Estrutura do Projeto
+## 📱 Sobre o Projeto
+
+Aplicativo de controle financeiro para casais, desenvolvido com React Native e Expo.
+
+## 🛠️ Tecnologias
+
+- React Native
+- Expo (SDK 50)
+- TypeScript
+- NativeWind (TailwindCSS)
+- React Navigation
+- Expo Router
+- Faker.js (Mocking)
+
+## 🎨 Design System
+
+### Cores
+```typescript
+{
+  primary: '#3b82f6',    // Blue
+  background: {
+    light: '#ffffff',
+    dark: '#1e293b'
+  },
+  text: {
+    light: {
+      primary: '#1e293b',
+      secondary: '#64748b'
+    },
+    dark: {
+      primary: '#ffffff',
+      secondary: '#94a3b8'
+    }
+  }
+}
+```
+
+### Componentes
+
+1. **ExpenseItem**
+   - Card com informações da despesa
+   - Suporte a tema claro/escuro
+   - Indicador de despesa recorrente
+   - Formatação de moeda (BRL)
+   - Formatação de data (pt-BR)
+   - Layout responsivo
+   - Touch feedback
+
+2. **Container**
+   - Wrapper com suporte a scroll
+   - Safe area handling
+   - Padding consistente
+   - Background adaptativo
+
+3. **Form Components**
+   - Inputs controlados
+   - Validação integrada
+   - Feedback de erros
+   - Estilização consistente
+
+## 📦 Estrutura do Projeto
 
 ```
 src/
-├── app/          # Páginas do Expo Router
-├── components/   # Componentes reutilizáveis
-├── hooks/        # Hooks personalizados
-├── styles/       # Estilos globais e tema
-└── @types/       # Definições de tipos TypeScript
+  ├── app/
+  │   └── (tabs)/
+  │       ├── (top-tabs)/
+  │       │   ├── index/
+  │       │   │   ├── components/
+  │       │   │   │   └── ExpenseItem/
+  │       │   │   ├── Expenses.mock.ts
+  │       │   │   └── Expenses.types.ts
+  │       │   └── gains/
+  │       ├── piggyBanks/
+  │       └── profile/
+  ├── components/
+  │   ├── Button/
+  │   ├── Container/
+  │   └── form/
+  └── hooks/
+      └── useTheme/
 ```
-
-## 🛠️ Tecnologias Principais
-
-- **Framework**: React Native com Expo
-- **Linguagem**: TypeScript
-- **Estilização**: NativeWind (TailwindCSS para React Native)
-- **Navegação**: Expo Router
-- **Formulários**: React Hook Form
-- **Animações**: React Native Reanimated
-- **Persistência**: AsyncStorage
-- **Linting**: ESLint + Prettier
-- **Gerenciador de Pacotes**: Yarn
-
-## 🎨 Sistema de Tema
-
-- Utiliza NativeWind para gerenciamento de tema
-- Suporte a modo claro/escuro
-- Persistência do tema com AsyncStorage
-- Animações suaves na transição de temas
-- Cores personalizadas definidas em `src/styles/colors.ts`
-
-## 📝 Padrões de Código
-
-- **Estilo**: 
-  - Sem ponto e vírgula
-  - Aspas simples
-  - Indentação de 2 espaços
-  - Máximo de 80 caracteres por linha
-
-- **Componentes**:
-  - Nomenclatura em PascalCase
-  - Um componente por arquivo
-  - Estilização com NativeWind
-  - Tipagem TypeScript
-
-- **Hooks**:
-  - Nomenclatura em camelCase
-  - Prefixo 'use' para hooks personalizados
-  - Tipagem de retorno e parâmetros
-
-## 🔧 Configurações
-
-### ESLint
-- Configurado para TypeScript
-- Integração com Prettier
-- Regras específicas para React Native
-- Sem ponto e vírgula
-
-### Prettier
-- Integrado com ESLint
-- Configurações de formatação consistentes
-- Sem ponto e vírgula
-
-### NativeWind
-- Configurado para modo escuro
-- Cores personalizadas
-- Variáveis CSS para temas
-
-## 📱 Funcionalidades Principais
-
-1. **Gerenciamento de Tema**
-   - Toggle entre modo claro/escuro
-   - Persistência da preferência
-   - Animações suaves
-
-2. **Navegação**
-   - Sistema de tabs
-   - Rotas protegidas
-   - Navegação tipo-stack
-
-3. **Formulários**
-   - Validação com React Hook Form
-   - Campos controlados
-   - Feedback de erros
 
 ## 🔄 Fluxos Comuns
 
@@ -112,27 +110,6 @@ src/
    - Criar em `src/components`
    - Exportar via `src/components/index.ts`
    - Incluir tipos TypeScript
-
-## 📦 Dependências Principais
-
-```json
-{
-  "dependencies": {
-    "expo": "^50.0.19",
-    "nativewind": "^4.1.23",
-    "react-hook-form": "^7.57.0",
-    "react-native-reanimated": "3.16.2"
-  }
-}
-```
-
-## 🎯 Objetivos do Projeto
-
-- Aplicativo de controle financeiro para casais
-- Interface intuitiva e responsiva
-- Suporte a temas claro/escuro
-- Experiência de usuário fluida
-- Código limpo e manutenível
 
 ## 📚 Convenções de Nomenclatura
 

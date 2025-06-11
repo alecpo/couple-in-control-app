@@ -1,23 +1,22 @@
 import React from 'react'
 
 import { Stack } from 'expo-router'
-import { useColorScheme } from 'nativewind'
 import { StatusBar } from 'expo-status-bar'
 
-export default function RootLayout() {
-  const { colorScheme } = useColorScheme()
+import '../../global.css'
 
+export default function RootLayout() {
   return (
     <>
-      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
+      <StatusBar style="dark" />
       <Stack
         screenOptions={{
           headerStyle: {
-            backgroundColor: colorScheme === 'dark' ? '#1e293b' : 'white',
+            backgroundColor: 'bg-background-light',
           },
-          headerTintColor: colorScheme === 'dark' ? 'white' : 'black',
+          headerTintColor: 'text-text-light-primary',
           contentStyle: {
-            backgroundColor: colorScheme === 'dark' ? '#1e293b' : 'white',
+            backgroundColor: 'bg-background-light',
           },
           headerShown: false,
         }}

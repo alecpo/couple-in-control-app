@@ -5,9 +5,8 @@ import {
 } from '@react-navigation/material-top-tabs'
 import { withLayoutContext } from 'expo-router'
 import { ParamListBase, TabNavigationState } from '@react-navigation/native'
-import { useColorScheme } from 'nativewind'
-
 import { Dimensions } from 'react-native'
+import { useThemeColors } from '../../../hooks/useThemeColors'
 
 const { Navigator } = createMaterialTopTabNavigator()
 
@@ -19,7 +18,7 @@ const MaterialTopTabs = withLayoutContext<
 >(Navigator)
 
 export default function TopTabsLayout() {
-  const { colorScheme } = useColorScheme()
+  const colors = useThemeColors()
   const screenWidth = Dimensions.get('window').width
   const tabWidth = screenWidth / 2
 
@@ -27,32 +26,34 @@ export default function TopTabsLayout() {
     <MaterialTopTabs
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: colorScheme === 'dark' ? '#1e293b' : 'white',
+          backgroundColor: colors.background.light,
           elevation: 0,
           shadowOpacity: 0,
           borderBottomWidth: 1,
-          borderBottomColor: colorScheme === 'dark' ? '#334155' : '#e5e7eb',
+          height: 52,
+          paddingBottom: 8,
+          paddingTop: 8,
         },
         tabBarLabelStyle: {
           fontSize: 14,
           textTransform: 'none',
-          color: colorScheme === 'dark' ? 'white' : 'black',
+          color: colors.text.light.primary,
         },
         tabBarIndicatorStyle: {
-          backgroundColor: '#3b82f6',
+          backgroundColor: colors.primary[500],
+          height: 3,
         },
-        tabBarActiveTintColor: colorScheme === 'dark' ? 'white' : 'black',
-        tabBarInactiveTintColor: colorScheme === 'dark' ? '#94a3b8' : '#64748b',
+        tabBarActiveTintColor: colors.text.light.primary,
+        tabBarInactiveTintColor: colors.text.light.tertiary,
         tabBarItemStyle: {
           width: tabWidth,
           alignItems: 'center',
           justifyContent: 'center',
         },
       }}
-      initialRouteName="index"
     >
       <MaterialTopTabs.Screen
-        name="index"
+        name="index/index"
         options={{
           title: 'Despesas',
         }}
