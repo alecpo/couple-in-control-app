@@ -6,7 +6,7 @@ import {
 import { withLayoutContext } from 'expo-router'
 import { ParamListBase, TabNavigationState } from '@react-navigation/native'
 import { useColorScheme } from 'nativewind'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+
 import { Dimensions } from 'react-native'
 
 const { Navigator } = createMaterialTopTabNavigator()

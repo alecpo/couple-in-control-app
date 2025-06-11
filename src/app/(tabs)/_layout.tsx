@@ -40,7 +40,7 @@ export default function TabsLayout() {
           }}
         />
         <Tabs.Screen
-          name="index"
+          name="(top-tabs)"
           options={{
             title: 'Fluxo de Caixa',
             tabBarIcon: ({ color, size }) => (
