@@ -3,7 +3,9 @@ import { colors } from '@/styles/colors'
 
 const getColorFromPath = (path?: ColorPath): string => {
   if (!path) return colors.primary[500]
-
+  if (!path.includes('.')) {
+    throw new Error('Invalid color path')
+  }
   const parts = path.split('.')
   if (parts.length === 2) {
     const [category, shade] = parts

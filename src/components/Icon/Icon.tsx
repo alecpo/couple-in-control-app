@@ -13,5 +13,7 @@ export const Icon = ({ name, size = 24, color = 'primary.500' }: IconProps) => {
   const { getColorFromPath } = useThemeColors()
   const colorValue = getColorFromPath(color)
 
+  //   console.log(colorValue)
+
   return <MaterialCommunityIcons name={name} size={size} color={colorValue} />
 }

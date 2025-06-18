@@ -8,9 +8,9 @@ const AddExpenseButton = () => {
   return (
     <FloatingActionButton
       onPress={() => router.push('/expense/new')}
-      icon="cash-minus"
+      icon="plus"
       size={28}
-      color={colors.warning[400]}
+      color={colors.neutral[500]}
     />
   )
 }

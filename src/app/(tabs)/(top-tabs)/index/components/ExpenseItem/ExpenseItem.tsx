@@ -11,13 +11,17 @@ interface ExpenseItemProps {
 }
 
 const ExpenseItem = ({ expense, onPress }: ExpenseItemProps) => {
-  const { getColorFromPath } = useThemeColors()
+  const { colors, getColorFromPath } = useThemeColors()
 
   const { piggyBanks } = usePiggyBankZustand()
 
   const piggyBank = piggyBanks.find(
     piggyBank => piggyBank.id === expense?.piggyBankId
   )
+
+  const piggyBankColor = piggyBank?.color
+  const piggyBankTailwindColor =
+    piggyBank?.color?.replaceAll('.', '-') ?? 'primary-500'
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('pt-BR', {
@@ -42,7 +46,14 @@ const ExpenseItem = ({ expense, onPress }: ExpenseItemProps) => {
     >
       <View className="p-4">
         <View className="flex-row justify-between items-center mb-2">
-          <View className="flex-row items-center">
+          <View className="flex-row items-center gap-1">
+            {expense?.isRecurring && (
+              <MaterialCommunityIcons
+                name="repeat"
+                size={14}
+                color={colors.neutral[500]}
+              />
+            )}
             <Text className="text-base font-medium text-text-light-primary">
               {expense?.title}
             </Text>
@@ -65,24 +76,17 @@ const ExpenseItem = ({ expense, onPress }: ExpenseItemProps) => {
           <Text className="text-xs text-text-light-tertiary">
             {formatDate(expense?.date ?? new Date())}
           </Text>
-          <View className="flex-row items-center">
-            <Icon name="piggy-bank" color={piggyBank?.color} size={14} />
-            <Text className="text-xs text-text-light-tertiary ml-1">
-              {piggyBank?.title}
-            </Text>
-          </View>
-          {/* {expense?.isRecurring && (
-            <View className="flex-row items-center">
-              <MaterialCommunityIcons
-                name="repeat"
-                size={14}
-                color={colors.neutral[500]}
-              />
-              <Text className="ml-1 text-xs text-text-light-tertiary">
-                Recorrente
+          {piggyBank && (
+            <View
+              className="flex-row items-center rounded-full px-2 py-1"
+              style={{ backgroundColor: getColorFromPath(piggyBank?.color) }}
+            >
+              <Icon name="piggy-bank" color="neutral.50" size={14} />
+              <Text className="text-sm font-bold text-neutral-50 ml-1">
+                {piggyBank?.title}
               </Text>
             </View>
-          )} */}
+          )}
         </View>
       </View>
     </TouchableOpacity>

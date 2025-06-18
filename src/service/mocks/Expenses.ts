@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker'
 import { Expense } from '../../app/(tabs)/(top-tabs)/index/Expenses.types'
 import { getAllPiggyBanks } from './piggyBanks'
 
-const categories = [
+const titles = [
   'Aluguel',
   'Battlenet',
   'Luz',
@@ -15,22 +15,22 @@ const categories = [
   'Poupança',
 ] as const
 
-const recurringCategories = ['Aluguel', 'Luz', 'Internet', 'Poupança'] as const
-
 export async function generateExpenses(count = 10): Promise<Expense[]> {
   const piggyBanks = await getAllPiggyBanks()
   const piggyBanksIds = piggyBanks.map(piggyBank => piggyBank.id)
-  return Array.from({ length: count }, () => {
+  return Array.from({ length: count }, (_, index) => {
     const newExpense: Expense = {
       id: faker.string.uuid(),
-      title: faker.helpers.arrayElement(categories),
+      title: titles[index],
       amount: faker.number.int({ min: 20, max: 2000 }),
       date: faker.date.recent({ days: 30 }),
       description: faker.lorem.sentence(),
-      isRecurring:
-        faker.helpers.arrayElement(categories) in recurringCategories,
+      isRecurring: index % 2 === 0,
       isPaid: faker.datatype.boolean(),
-      piggyBankId: faker.helpers.arrayElement(piggyBanksIds),
+      piggyBankId:
+        index === count - 1
+          ? undefined
+          : piggyBanksIds[index % piggyBanksIds.length],
     }
     return newExpense
   })
