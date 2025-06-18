@@ -81,8 +81,8 @@ const ExpenseItem = ({ expense, onPress }: ExpenseItemProps) => {
               className="flex-row items-center rounded-full px-2 py-1"
               style={{ backgroundColor: getColorFromPath(piggyBank?.color) }}
             >
-              <Icon name="piggy-bank" color="neutral.50" size={14} />
-              <Text className="text-sm font-bold text-neutral-50 ml-1">
+              <Icon name="piggy-bank" color="neutral.50" size={12} />
+              <Text className="text-xs font-bold text-neutral-50 ml-1">
                 {piggyBank?.title}
               </Text>
             </View>
