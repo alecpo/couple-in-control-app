@@ -5,4 +5,6 @@ export interface Expense {
   date: Date
   description?: string
   isRecurring: boolean
+  isPaid: boolean
+  piggyBankId?: string
 }

@@ -19,7 +19,7 @@ export const ControlledTextInput = <T extends FieldValues>({
   error,
   ...rest
 }: ControlledTextInputProps<T>) => {
-  const colors = useThemeColors()
+  const { colors } = useThemeColors()
 
   return (
     <View className="mb-4">

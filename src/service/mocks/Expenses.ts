@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker'
-import { Expense } from './Expenses.types'
+import { Expense } from '../../app/(tabs)/(top-tabs)/index/Expenses.types'
+import { getAllPiggyBanks } from './piggyBanks'
 
 const categories = [
   'Aluguel',
@@ -16,7 +17,9 @@ const categories = [
 
 const recurringCategories = ['Aluguel', 'Luz', 'Internet', 'Poupança'] as const
 
-export function generateExpenses(count = 10) {
+export async function generateExpenses(count = 10): Promise<Expense[]> {
+  const piggyBanks = await getAllPiggyBanks()
+  const piggyBanksIds = piggyBanks.map(piggyBank => piggyBank.id)
   return Array.from({ length: count }, () => {
     const newExpense: Expense = {
       id: faker.string.uuid(),
@@ -26,9 +29,9 @@ export function generateExpenses(count = 10) {
       description: faker.lorem.sentence(),
       isRecurring:
         faker.helpers.arrayElement(categories) in recurringCategories,
+      isPaid: faker.datatype.boolean(),
+      piggyBankId: faker.helpers.arrayElement(piggyBanksIds),
     }
     return newExpense
   })
 }
-
-export const expenses = generateExpenses()

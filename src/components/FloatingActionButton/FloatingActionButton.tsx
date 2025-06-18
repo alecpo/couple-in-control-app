@@ -1,23 +1,21 @@
 import { Pressable, View } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { useThemeColors } from '@/hooks/useThemeColors'
-import { colors } from '@/styles/colors'
-import { Path } from 'react-hook-form'
 
-interface FloatingActionButtonProps {
+export interface FloatingActionButtonProps {
   onPress: () => void
   icon: keyof typeof MaterialCommunityIcons.glyphMap
   size: number
   color?: string
 }
 
-const FloatingActionButton = ({
+export const FloatingActionButton = ({
   onPress,
   icon,
   size,
   color,
 }: FloatingActionButtonProps) => {
-  const colors = useThemeColors()
+  const { colors } = useThemeColors()
 
   return (
     <View className="absolute bottom-6 right-6">
@@ -35,5 +33,3 @@ const FloatingActionButton = ({
     </View>
   )
 }
-
-export default FloatingActionButton

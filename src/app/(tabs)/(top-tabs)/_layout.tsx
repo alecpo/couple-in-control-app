@@ -18,7 +18,7 @@ const MaterialTopTabs = withLayoutContext<
 >(Navigator)
 
 export default function TopTabsLayout() {
-  const colors = useThemeColors()
+  const { colors } = useThemeColors()
   const screenWidth = Dimensions.get('window').width
   const tabWidth = screenWidth / 2
 
@@ -29,7 +29,6 @@ export default function TopTabsLayout() {
           backgroundColor: colors.background.light,
           elevation: 0,
           shadowOpacity: 0,
-          borderBottomWidth: 1,
           height: 52,
           paddingBottom: 8,
           paddingTop: 8,

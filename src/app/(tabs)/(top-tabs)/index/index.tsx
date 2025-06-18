@@ -1,10 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ScrollView } from 'react-native'
 import ExpenseItem from './components/ExpenseItem'
-import { expenses } from './Expenses.mock'
+import { generateExpenses } from '../../../../service/mocks/Expenses'
 import AddExpenseButton from '@/components/AddExpenseButton'
+import { Expense } from './Expenses.types'
+import { usePiggyBankZustand } from '@/app/zustands'
 
 export default function ExpensesScreen() {
+  const { piggyBanks } = usePiggyBankZustand()
+
+  const [expenses, setExpenses] = useState<Expense[]>([])
+
+  const fetchExpenses = async () => {
+    const expenses = await generateExpenses(10)
+    setExpenses(expenses)
+  }
+
+  useEffect(() => {
+    fetchExpenses()
+  }, [])
+
   return (
     <>
       <ScrollView className="flex-1 p-4">

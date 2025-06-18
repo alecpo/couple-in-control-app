@@ -1,10 +1,10 @@
 import { useRouter } from 'expo-router'
-import FloatingActionButton from '../FloatingActionButton'
+import { FloatingActionButton } from '../FloatingActionButton'
 import { useThemeColors } from '@/hooks/useThemeColors'
 
 const AddExpenseButton = () => {
   const router = useRouter()
-  const colors = useThemeColors()
+  const { colors } = useThemeColors()
   return (
     <FloatingActionButton
       onPress={() => router.push('/expense/new')}

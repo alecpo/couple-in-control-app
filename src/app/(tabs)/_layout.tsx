@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { useThemeColors } from '@/hooks/useThemeColors'
 
 export default function TabsLayout() {
-  const colors = useThemeColors()
+  const { colors } = useThemeColors()
   const backgroundColor = colors.background.light
 
   return (
@@ -25,6 +25,7 @@ export default function TabsLayout() {
           tabBarInactiveTintColor: colors.neutral[500],
           headerShown: false,
         }}
+        initialRouteName="(top-tabs)"
       >
         <Tabs.Screen
           name="piggyBanks"

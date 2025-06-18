@@ -2,6 +2,8 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Expense } from '../../Expenses.types'
 import { useThemeColors } from '../../../../../../hooks/useThemeColors'
+import { usePiggyBankZustand } from '@/app/zustands'
+import { Icon } from '@/components'
 
 interface ExpenseItemProps {
   expense?: Expense
@@ -9,7 +11,13 @@ interface ExpenseItemProps {
 }
 
 const ExpenseItem = ({ expense, onPress }: ExpenseItemProps) => {
-  const colors = useThemeColors()
+  const { getColorFromPath } = useThemeColors()
+
+  const { piggyBanks } = usePiggyBankZustand()
+
+  const piggyBank = piggyBanks.find(
+    piggyBank => piggyBank.id === expense?.piggyBankId
+  )
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('pt-BR', {
@@ -35,12 +43,7 @@ const ExpenseItem = ({ expense, onPress }: ExpenseItemProps) => {
       <View className="p-4">
         <View className="flex-row justify-between items-center mb-2">
           <View className="flex-row items-center">
-            <MaterialCommunityIcons
-              name={expense?.isRecurring ? 'repeat' : 'cash'}
-              size={20}
-              color={colors.neutral[500]}
-            />
-            <Text className="ml-2 text-base font-medium text-text-light-primary">
+            <Text className="text-base font-medium text-text-light-primary">
               {expense?.title}
             </Text>
           </View>
@@ -62,7 +65,13 @@ const ExpenseItem = ({ expense, onPress }: ExpenseItemProps) => {
           <Text className="text-xs text-text-light-tertiary">
             {formatDate(expense?.date ?? new Date())}
           </Text>
-          {expense?.isRecurring && (
+          <View className="flex-row items-center">
+            <Icon name="piggy-bank" color={piggyBank?.color} size={14} />
+            <Text className="text-xs text-text-light-tertiary ml-1">
+              {piggyBank?.title}
+            </Text>
+          </View>
+          {/* {expense?.isRecurring && (
             <View className="flex-row items-center">
               <MaterialCommunityIcons
                 name="repeat"
@@ -73,7 +82,7 @@ const ExpenseItem = ({ expense, onPress }: ExpenseItemProps) => {
                 Recorrente
               </Text>
             </View>
-          )}
+          )} */}
         </View>
       </View>
     </TouchableOpacity>
