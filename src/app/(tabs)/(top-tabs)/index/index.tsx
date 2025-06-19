@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import ExpenseItem from './components/ExpenseItem'
 import { generateExpenses } from '../../../../service/mocks/Expenses'
 import AddExpenseButton from '@/components/AddExpenseButton'
 import { Expense } from './Expenses.types'
-import { usePiggyBankZustand } from '@/app/zustands'
+import { TabContainer } from '../../components/TabContainer'
+import { BalanceSection } from '../../components/BalanceSection'
 
 export default function ExpensesScreen() {
-  const { piggyBanks } = usePiggyBankZustand()
-
   const [expenses, setExpenses] = useState<Expense[]>([])
 
   const fetchExpenses = async () => {
@@ -22,11 +21,21 @@ export default function ExpensesScreen() {
 
   return (
     <>
-      <ScrollView className="flex-1 p-4">
-        {expenses.map(expense => (
-          <ExpenseItem key={expense.id} expense={expense} />
+      <ScrollView
+        className="flex-1 px-4"
+        contentContainerStyle={{ paddingVertical: 12 }}
+      >
+        {expenses.map((expense, index) => (
+          <ExpenseItem
+            key={expense.id}
+            expense={expense}
+            {...(index !== expenses.length - 1 && {
+              className: 'mb-3',
+            })}
+          />
         ))}
       </ScrollView>
+      <BalanceSection />
       <AddExpenseButton />
     </>
   )

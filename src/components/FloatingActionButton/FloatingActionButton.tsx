@@ -18,7 +18,7 @@ export const FloatingActionButton = ({
   const { colors } = useThemeColors()
 
   return (
-    <View className="absolute bottom-6 right-6">
+    <View className="absolute bottom-3 right-6 z-50">
       <Pressable
         onPress={onPress}
         className={`w-14 h-14 rounded-full items-center justify-center shadow-lg`}

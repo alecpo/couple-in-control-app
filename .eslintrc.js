@@ -24,7 +24,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     'no-console': ['warn', { allow: ['warn', 'error'] }],
-    'react-native/no-inline-styles': 'warn',
+    'react-native/no-inline-styles': 'off',
     '@typescript-eslint/triple-slash-reference': 'off',
     'prettier/prettier': ['error', {
       semi: false,

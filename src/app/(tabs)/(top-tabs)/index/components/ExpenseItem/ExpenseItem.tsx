@@ -1,16 +1,26 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TouchableOpacityProps,
+} from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Expense } from '../../Expenses.types'
 import { useThemeColors } from '../../../../../../hooks/useThemeColors'
 import { usePiggyBankZustand } from '@/app/zustands'
 import { Icon } from '@/components'
 
-interface ExpenseItemProps {
+interface ExpenseItemProps extends TouchableOpacityProps {
   expense?: Expense
   onPress?: () => void
 }
 
-const ExpenseItem = ({ expense, onPress }: ExpenseItemProps) => {
+const ExpenseItem = ({
+  expense,
+  onPress,
+  className,
+  ...touchableOpacityProps
+}: ExpenseItemProps) => {
   const { colors, getColorFromPath } = useThemeColors()
 
   const { piggyBanks } = usePiggyBankZustand()
@@ -41,8 +51,9 @@ const ExpenseItem = ({ expense, onPress }: ExpenseItemProps) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      className="mb-3 rounded-xl overflow-hidden bg-background-light"
+      className={`rounded-xl overflow-hidden bg-background-light ${className}`}
       activeOpacity={0.7}
+      {...touchableOpacityProps}
     >
       <View className="p-4">
         <View className="flex-row justify-between items-center mb-2">

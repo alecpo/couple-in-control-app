@@ -1,12 +1,13 @@
 import { Tabs } from 'expo-router'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { useColorScheme } from 'nativewind'
 
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useThemeColors } from '@/hooks/useThemeColors'
+import { Text, View } from 'react-native'
 
 export default function TabsLayout() {
   const { colors } = useThemeColors()
+
   const backgroundColor = colors.background.light
 
   return (
