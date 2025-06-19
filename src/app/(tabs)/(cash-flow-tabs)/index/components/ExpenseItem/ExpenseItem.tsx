@@ -4,7 +4,7 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
 } from 'react-native'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+
 import { Expense } from '../../Expenses.types'
 import { useThemeColors } from '../../../../../../hooks/useThemeColors'
 import { usePiggyBankZustand } from '@/app/zustands'
@@ -59,11 +59,7 @@ const ExpenseItem = ({
         <View className="flex-row justify-between items-center mb-2">
           <View className="flex-row items-center gap-1">
             {expense?.isRecurring && (
-              <MaterialCommunityIcons
-                name="repeat"
-                size={14}
-                color={colors.neutral[500]}
-              />
+              <Icon name="repeat" size={14} color="neutral.500" />
             )}
             <Text className="text-base font-medium text-text-light-primary">
               {expense?.title}

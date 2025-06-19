@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { ScrollView, View } from 'react-native'
+import { ScrollView } from 'react-native'
 import ExpenseItem from './components/ExpenseItem'
 import { generateExpenses } from '../../../../service/mocks/Expenses'
 import AddExpenseButton from '@/components/AddExpenseButton'
 import { Expense } from './Expenses.types'
-import { TabContainer } from '../../components/TabContainer'
+
 import { BalanceSection } from '../../components/BalanceSection'
 
 export default function ExpensesScreen() {

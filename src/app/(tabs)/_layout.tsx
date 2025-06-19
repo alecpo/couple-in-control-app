@@ -1,9 +1,9 @@
 import { Tabs } from 'expo-router'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useThemeColors } from '@/hooks/useThemeColors'
-import { Text, View } from 'react-native'
+
+import { Icon } from '@/components'
 
 export default function TabsLayout() {
   const { colors } = useThemeColors()
@@ -26,44 +26,32 @@ export default function TabsLayout() {
           tabBarInactiveTintColor: colors.neutral[500],
           headerShown: false,
         }}
-        initialRouteName="(top-tabs)"
+        initialRouteName="(cash-flow-tabs)"
       >
         <Tabs.Screen
-          name="piggyBanks"
+          name="PiggyBanks"
           options={{
             title: 'Cofrinhos',
             tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons
-                name="piggy-bank-outline"
-                size={size}
-                color={color}
-              />
+              <Icon name="piggy-bank-outline" size={size} color={color} />
             ),
           }}
         />
         <Tabs.Screen
-          name="(top-tabs)"
+          name="(cash-flow-tabs)"
           options={{
             title: 'Fluxo de Caixa',
             tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons
-                name="cash-multiple"
-                size={size}
-                color={color}
-              />
+              <Icon name="cash-multiple" size={size} color={color} />
             ),
           }}
         />
         <Tabs.Screen
-          name="profile"
+          name="Profile"
           options={{
             title: 'Perfil',
             tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons
-                name="account-outline"
-                size={size}
-                color={color}
-              />
+              <Icon name="account-outline" size={size} color={color} />
             ),
           }}
         />

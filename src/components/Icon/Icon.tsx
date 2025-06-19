@@ -3,17 +3,34 @@ import { ColorPath } from '@/types/colors'
 
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-export interface IconProps {
-  name: keyof typeof MaterialCommunityIcons.glyphMap
+export type IconName = keyof typeof MaterialCommunityIcons.glyphMap
+
+// Function overloads for better autocomplete
+export function Icon(props: {
+  name: IconName
   size?: number
-  color?: ColorPath
-}
-
-export const Icon = ({ name, size = 24, color = 'primary.500' }: IconProps) => {
+  color: ColorPath
+}): JSX.Element
+export function Icon(props: {
+  name: IconName
+  size?: number
+  color?: string
+}): JSX.Element
+export function Icon({
+  name,
+  size = 24,
+  color = 'primary.500',
+}: {
+  name: IconName
+  size?: number
+  color?: ColorPath | string
+}) {
   const { getColorFromPath } = useThemeColors()
-  const colorValue = getColorFromPath(color)
 
-  //   console.log(colorValue)
+  // Check if color is a ColorPath or custom string
+  const colorValue = color.includes('.')
+    ? getColorFromPath(color as ColorPath)
+    : color
 
   return <MaterialCommunityIcons name={name} size={size} color={colorValue} />
 }

@@ -1,10 +1,10 @@
 import { Pressable, View } from 'react-native'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { useThemeColors } from '@/hooks/useThemeColors'
+import { Icon, IconName } from '../Icon'
 
 export interface FloatingActionButtonProps {
   onPress: () => void
-  icon: keyof typeof MaterialCommunityIcons.glyphMap
+  icon: IconName
   size: number
   color?: string
 }
@@ -24,11 +24,7 @@ export const FloatingActionButton = ({
         className={`w-14 h-14 rounded-full items-center justify-center shadow-lg`}
         style={{ backgroundColor: color ?? colors.primary[500] }}
       >
-        <MaterialCommunityIcons
-          name={icon}
-          size={size}
-          color={colors.background.light}
-        />
+        <Icon name={icon} size={size} color="background.light" />
       </Pressable>
     </View>
   )

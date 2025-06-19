@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { Expense } from '../../app/(tabs)/(top-tabs)/index/Expenses.types'
+import { Expense } from '../../app/(tabs)/(cash-flow-tabs)/index/Expenses.types'
 import { getAllPiggyBanks } from './piggyBanks'
 
 const titles = [
