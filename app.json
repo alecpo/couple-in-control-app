@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "couple-in-control-app",
+    "name": "Couple in Control",
     "slug": "couple-in-control-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -8,7 +8,7 @@
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/icon-bg-transparent.png",
       "resizeMode": "contain",
       "backgroundColor": "#0f172a"
     },
@@ -19,8 +19,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/icon-bg-transparent.png",
+        "backgroundColor": "#0f172a"
       },
       "edgeToEdgeEnabled": true,
       "package": "com.anonymous.coupleincontrolapp"
