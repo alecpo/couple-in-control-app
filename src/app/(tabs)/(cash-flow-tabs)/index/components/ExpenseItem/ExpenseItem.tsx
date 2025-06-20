@@ -5,10 +5,11 @@ import {
   TouchableOpacityProps,
 } from 'react-native'
 
-import { Expense } from '../../Expenses.types'
+import { Expense } from '@/data/models/expense'
 import { useThemeColors } from '../../../../../../hooks/useThemeColors'
 import { usePiggyBankZustand } from '@/app/zustands'
 import { Icon } from '@/components'
+import { formatDateTime } from '@/utils'
 
 interface ExpenseItemProps extends TouchableOpacityProps {
   expense?: Expense
@@ -81,7 +82,7 @@ const ExpenseItem = ({
 
         <View className="flex-row justify-between items-center">
           <Text className="text-xs text-text-light-tertiary">
-            {formatDate(expense?.date ?? new Date())}
+            {formatDateTime(expense?.date)}
           </Text>
           {piggyBank && (
             <View

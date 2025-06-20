@@ -1,10 +1,15 @@
+import { TDate } from '@/types/utils'
+
 export interface Expense {
-  id: string
+  id?: string
+  userId?: string
   title: string
   amount: number
-  date: Date
+  date: TDate
   description?: string
   isRecurring: boolean
   isPaid: boolean
   piggyBankId?: string
+  createdAt?: TDate
+  updatedAt?: TDate
 }
