@@ -15,13 +15,15 @@
     "scheme": "couple-in-control-app",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.coupleincontrolapp"
+      "bundleIdentifier": "com.anonymous.coupleincontrolapp",
+      "googleServicesFile": "./firebase/GoogleService-Info.plist"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-bg-transparent.png",
         "backgroundColor": "#0f172a"
       },
+      "googleServicesFile": "./firebase/google-services.json",
       "edgeToEdgeEnabled": true,
       "package": "com.anonymous.coupleincontrolapp"
     },
@@ -31,7 +33,17 @@
     },
     "plugins": [
       "expo-router",
-      "expo-font"
+      "expo-font",
+      "@react-native-firebase/app",
+      "@react-native-firebase/firestore",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
+      ]
     ]
   }
 }

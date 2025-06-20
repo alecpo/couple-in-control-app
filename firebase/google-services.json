@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1042302067275",
+    "project_id": "couple-in-control",
+    "storage_bucket": "couple-in-control.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042302067275:android:0fe35821d5e77a95e9a3ce",
+        "android_client_info": {
+          "package_name": "com.anonymous.coupleincontrolapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7etGjAy308Iv3iG837FohVNZAs2LoLCo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
